@@ -9,32 +9,31 @@ import shoppingCart from "../models/shoppingCart.js"
 import shoppingCartModel from "../models/shoppingCart.js"
 
 // SELECT (antes de hacer el select (o cualquiera) voy a models)
-shoppingCartController.getCategories = async (req, res) => {
-     const categories = await categoriesModel.find()
-     res.json(categories)
+shoppingCartController.getShoppingCart = async (req, res) => {
+     const shoppingCart = await shoppingCartModel.find()
+     res.json(shoppingCart)
 }
 
-
 //INSERT
-categoriesControllers.insertCategories = async (req, res) =>{
-    const { nameCategories } = req.body;
-    const newCategory = new categoriesModel({nameCategories})
-    await newCategory.save()
-    res.json({message: "Category saved"})
-}   
+shoppingCartController.insertShoppingCart= async (req, res) => {
+    const { products, idUser, total } = req.body;
+    const newShoppingCart = new shoppingCartModel({ products, idUser, total });
+    await newShoppingCart.save();
+    res.json({ message: "Insert saved" });
+  };
 
 
 //DELETE
-categoriesControllers.deleteCategories = async (req, res) =>{
-    await categoriesModel.findByIdAndDelete(req.params.id)
-    res.json({message: "Category deleted"}) 
+shoppingCartController.deleteShoppingCart = async (req, res) =>{
+    await shoppingCartModel.findByIdAndDelete(req.params.id)
+    res.json({message: "Deleted successfully"}) 
 }
 
 //UPDATE
-categoriesControllers.updateCategories = async (req, res) =>{
-    const { nameCategories } = (req.params.id,
-        {nameCategories}, {new: true})
-    res.json({message: "Categeory updated successfully"})
+shoppingCartController.updateShoppingCart = async (req, res) =>{
+    const { products, idUser, total } = (req.params.id,
+        {products, idUser, total}, {new: true})
+    res.json({message: "Updated successfully"})
 }
 
-export default categoriesControllers;
+export default shoppingCartController;
