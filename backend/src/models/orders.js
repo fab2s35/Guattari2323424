@@ -1,20 +1,21 @@
 /*Fields
-   products
-   idUser
+   idClient
+   idProducts
    total
     */
 
    import { Schema, model } from "mongoose";
 
-   const shoppingCartSchema = new Schema ({
+   const ordersSchema = new Schema ({
        
-       products:{
+       idClient:{
            type: String,
+           ref: "Clients", //Referencia a la colección de Clients
            require: true
        },
-       idUser:{
+       idProducts:{
         type: Schema.Types.ObjectId,
-        ref: "Users", //Referencia a la colección de Users
+        ref: "Products", //Referencia a la colección de Products
         require: true
     },
         total:{
@@ -28,4 +29,4 @@
    strict: false
 })
 
-export default model ("shoppingCart", shoppingCartSchema);
+export default model ("orders", ordersSchema);
