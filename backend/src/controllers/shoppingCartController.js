@@ -16,10 +16,10 @@ shoppingCartController.getShoppingCart = async (req, res) => {
 
 //INSERT
 shoppingCartController.insertShoppingCart= async (req, res) => {
-    const { products, idUser, total } = req.body;
-    const newShoppingCart = new shoppingCartModel({ products, idUser, total });
+    const { idUser, products, total } = req.body;
+    const newShoppingCart = new shoppingCartModel({ idUser, products, total });
     await newShoppingCart.save();
-    res.json({ message: "Insert saved" });
+    res.status(201).json({ message: "Insert saved" });
   };
 
 
@@ -31,8 +31,8 @@ shoppingCartController.deleteShoppingCart = async (req, res) =>{
 
 //UPDATE
 shoppingCartController.updateShoppingCart = async (req, res) =>{
-    const { products, idUser, total } = (req.params.id,
-        {products, idUser, total}, {new: true})
+    const { idUser, products, total } = (req.params.id,
+        {idUser, products, total}, {new: true})
     res.json({message: "Updated successfully"})
 }
 

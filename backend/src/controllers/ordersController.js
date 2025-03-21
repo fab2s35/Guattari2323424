@@ -16,8 +16,8 @@ ordersController.getOrders = async (req, res) => {
 
 //INSERT
 ordersController.insertOrder= async (req, res) => {
-    const { idClient, idProducts, total } = req.body;
-    const newOrder = new ordersController({ idClient, idProducts, total });
+    const { idClient, products, total, status } = req.body;
+    const newOrder = new ordersController({ idClient, products, total, status });
     await newOrder.save();
     res.json({ message: "Order saved" });
   };
@@ -31,8 +31,8 @@ ordersController.deleteOrder = async (req, res) =>{
 
 //UPDATE
 ordersController.updateOrder = async (req, res) =>{
-    const { idClient, idProducts, total } = (req.params.id,
-        {idClient, idProducts, total}, {new: true})
+    const { idClient, products, total, status } = (req.params.id,
+        {idClient, products, total, status}, {new: true})
     res.json({message: "Order updated"})
 }
 

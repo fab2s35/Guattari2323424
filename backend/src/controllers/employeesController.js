@@ -1,6 +1,6 @@
 //Array de metodos (C R U D)
 const employeesController = {};
-import employeeModel from "../models/employee.js";
+import employeeModel from "../models/employees.js";
 
 // SELECT
 employeesController.getEmployee = async (req, res) => {
@@ -9,9 +9,9 @@ employeesController.getEmployee = async (req, res) => {
 };
 
 // INSERT
-employeesController.createEmployee = async (req, res) => {
-  const { name, lastName, phone, assignedPosition, branchAddressId, passwordUser, photoUser } = req.body;
-  const newEmployee= new employeeModel({ name, lastName, phone, assignedPosition, branchAddressId, passwordUser, photoUser  });
+employeesController.insertEmployee = async (req, res) => {
+  const { name, lastName, phone, email, assignedPosition, branchAddressId, passwordUser, photoUser } = req.body;
+  const newEmployee= new employeeModel({ name, lastName, phone, email, assignedPosition, branchAddressId, passwordUser, photoUser  });
   await newEmployee.save();
   res.json({ message: "Employee saved" });
 };
@@ -27,10 +27,10 @@ const deletedEmployee = await employeeModel.findByIdAndDelete(req.params.id);
 
 // UPDATE
 employeesController.updateEmployee = async (req, res) => {
-  const { name, lastName, phone, assignedPosition, branchAddressId, passwordUser, photoUser  } = req.body;
+  const { name, lastName, phone, email, assignedPosition, branchAddressId, passwordUser, photoUser  } = req.body;
   await employeeModel.findByIdAndUpdate(
     req.params.id,
-    { name, lastName, phone, assignedPosition, branchAddressId, passwordUser, photoUser },
+    { name, lastName, phone, email, assignedPosition, branchAddressId, passwordUser, photoUser },
     { new: true }
   );
   res.json({ message: "employee update" });
