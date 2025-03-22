@@ -8,7 +8,7 @@
 
         nameCategories:{
             type: String,
-            require: true
+            required: [true, "Este campo es obligatorio"]
         }
 
     },

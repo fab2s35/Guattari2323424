@@ -2,6 +2,7 @@
 const employeesController = {};
 import employeeModel from "../models/employee.js";
 
+
 // SELECT
 employeesController.getEmployee = async (req, res) => {
   const employee = await employeeModel.find();

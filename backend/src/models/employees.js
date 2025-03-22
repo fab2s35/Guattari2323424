@@ -24,7 +24,6 @@ const employeeSchema = new Schema(
     },
 
     phone: {
-      type: Number,
       require: true,
       min: 8,
     },
