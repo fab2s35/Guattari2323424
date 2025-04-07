@@ -28,7 +28,7 @@ app.use("/api/orders", ordersRoutes);
 app.use("/api/employees", employeesRoutes);
 app.use("/api/brands", brandsRoutes);
 app.use("/api/branches", branchesRoutes);
-app.use("/api/suppliers", suppliersRoutes)
+app.use("/api/suppliers", suppliersRoutes);
 app.use("/api/products", productsRoutes);
 app.use("/api/sale", saleRoutes);
 app.use("/api/subcategory", subcategoryRoutes);
